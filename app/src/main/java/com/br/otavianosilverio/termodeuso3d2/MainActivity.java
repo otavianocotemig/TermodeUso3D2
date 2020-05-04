@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 MensagemDeErro(sexoSelecionado);
 
             }
-            // Botao checkbox clicado
+            // Botao checkbox clicado pelo usuário
             if (!this.mViewMain.check_aceite.isChecked()){
                 MensagemDeErro("Você precisa concordar com os termos de uso");
             }
