@@ -1,0 +1,2 @@
+rootProject.name='TermodeUso3D2'
+include ':app'

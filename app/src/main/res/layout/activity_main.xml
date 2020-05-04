@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/formulario_de_aceite"
+        android:textSize="25sp"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/edit_nome"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:hint="Informe o nome"
+        android:textSize="15sp"
+        android:inputType="text"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Informe o Sexo"
+        android:textSize="15sp"
+        android:layout_marginTop="10dp"/>
+
+    <RadioGroup
+       android:id="@+id/Rd_sexo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
+
+        <RadioButton
+            android:id="@+id/rdMasculino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Masculino"
+            android:textSize="15sp"/>
+
+        <RadioButton
+            android:id="@+id/rdFeminino"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Feminino"
+            android:textSize="15sp"/>
+
+        <RadioButton
+            android:id="@+id/rdOutros"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Outros"
+            android:textSize="15sp"/>
+
+
+    </RadioGroup>
+
+    <CheckBox
+        android:id="@+id/check_aceite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/Txt_termoUso"
+        android:layout_marginTop="15dp"
+        android:checked="false"/>
+
+    <Button
+        android:id="@+id/button_salvar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Salvar"
+        android:layout_marginTop="20dp"/>
+
+
+
+
+</LinearLayout>
