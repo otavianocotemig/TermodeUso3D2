@@ -5,12 +5,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+
+import java.util.regex.Matcher;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     // instanciando a classe ViewHolder
@@ -25,6 +28,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.mViewMain.rd_sexo = this.findViewById(R.id.Rd_sexo);
         this.mViewMain.check_aceite = this.findViewById(R.id.check_aceite);
         this.mViewMain.button_salvar = this.findViewById(R.id.button_salvar);
+        this.mViewMain.edit_email = this.findViewById(R.id.edit_email);
 
         //identifica todos os objetos com clique
         this.mViewMain.button_salvar.setOnClickListener(this);
@@ -38,26 +42,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         // botao gravar
         if (view.getId()== R.id.button_salvar){
             // Verificar se campo nome foi preenchido
-            if (TextUtils.isEmpty(this.mViewMain.edit_nome.getText().toString())){
-                this.mViewMain.edit_nome.setError("Informe o Nome compleott");
-                this.mViewMain.edit_nome.requestFocus();
-            }
-            // Botao do sexo foi preenchido
-            int itemRadioGroupSelecionado = this.mViewMain.rd_sexo.getCheckedRadioButtonId();
-            if(itemRadioGroupSelecionado == -1){
-                MensagemDeErro("Informe o Sexo");
-            }else{
-                RadioButton rbSexoSelecionado = findViewById(itemRadioGroupSelecionado);
-                String sexoSelecionado = rbSexoSelecionado.getText().toString();
-                MensagemDeErro(sexoSelecionado);
-
-            }
-            // Botao checkbox clicado pelo usuário
-            if (!this.mViewMain.check_aceite.isChecked()){
-                MensagemDeErro("Você precisa concordar com os termos de uso");
-            }
+           if (validaCampos() == false){
+            MensagemDeErro("Dados incorretos");
+           }else{
+               // gravar os dados..
+               MensagemDeErro("Dados Corretos");
+           }
 
         }
+
+    }
+    private boolean validaCampos() {
+        boolean resultado = false;
+
+        if (resultado = isCampoVazio(this.mViewMain.edit_nome.getText().toString())) {
+            this.mViewMain.edit_nome.requestFocus();
+        }
+
+        if (resultado = !isEmailValido(this.mViewMain.edit_email.getText().toString())) {
+            this.mViewMain.edit_email.setError("Email invalido");
+            this.mViewMain.edit_email.requestFocus();
+        }
+
+        // Botao do sexo foi preenchido
+        int itemRadioGroupSelecionado = this.mViewMain.rd_sexo.getCheckedRadioButtonId();
+        if (itemRadioGroupSelecionado == -1) {
+           resultado = false;
+        }else{
+            resultado = true;
+        }
+        // Botao checkbox clicado pelo usuário
+        if (!this.mViewMain.check_aceite.isChecked()) {
+          resultado = false;
+        }else{
+            resultado = true;
+        }
+        return resultado;
 
     }
 
@@ -70,13 +90,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Msg.show();
     }
 
+    private boolean isCampoVazio(String valor){
 
+        return (TextUtils.isEmpty(valor) || valor.trim().isEmpty());
+
+    }
+
+    private boolean isEmailValido(String email){
+            return (!isCampoVazio(email) && Patterns.EMAIL_ADDRESS.matcher(email).matches());
+    }
     // Mapear e identificar todos os objetos que serão manipulados no codigo
     private static class ViewHolder{
         private EditText edit_nome;
         private RadioGroup rd_sexo;
         private CheckBox check_aceite;
         private Button button_salvar;
+        private EditText edit_email;
+
 
 
     }

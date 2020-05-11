@@ -25,6 +25,15 @@
         android:textSize="15sp"
         android:inputType="text"/>
 
+    <EditText
+        android:id="@+id/edit_email"
+        android:layout_width="match_parent"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:hint="Informe o email "
+        android:textSize="15sp"
+        android:inputType="textEmailAddress"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
