@@ -3,6 +3,7 @@ package com.br.otavianosilverio.termodeuso3d2;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.regex.Matcher;
 
@@ -29,9 +31,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.mViewMain.check_aceite = this.findViewById(R.id.check_aceite);
         this.mViewMain.button_salvar = this.findViewById(R.id.button_salvar);
         this.mViewMain.edit_email = this.findViewById(R.id.edit_email);
+        this.mViewMain.lbl_politica = this.findViewById(R.id.lbl_politica);
 
         //identifica todos os objetos com clique
         this.mViewMain.button_salvar.setOnClickListener(this);
+        this.mViewMain.lbl_politica.setOnClickListener(this);
 
     }
     // Todos os objetos com clique serão executados no metodo
@@ -49,6 +53,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                MensagemDeErro("Dados Corretos");
            }
 
+        }
+        if (view.getId() == R.id.lbl_politica){
+            Intent acessoTelaPolitica = new Intent(MainActivity.this,PoliticaPrivacidade.class);
+            startActivity(acessoTelaPolitica);
         }
 
     }
@@ -106,6 +114,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         private CheckBox check_aceite;
         private Button button_salvar;
         private EditText edit_email;
+        private TextView lbl_politica;
 
 
 

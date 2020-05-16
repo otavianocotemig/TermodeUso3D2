@@ -85,9 +85,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Salvar"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="30dp"/>
 
-
+    <TextView
+        android:id="@+id/lbl_politica"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textSize="15sp"
+         android:layout_marginTop="20dp"
+        android:text="Politica de Privacidade" />
 
 
 </LinearLayout>
